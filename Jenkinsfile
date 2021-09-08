@@ -12,7 +12,6 @@ pipeline {
                 sh './gradlew build --no-daemon'
                 }
             }
-        }
     
         stage('Build Docker Image') {
             when {
