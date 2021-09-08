@@ -4,7 +4,16 @@ pipeline {
         //be sure to replace "felipelujan" with your own Docker Hub username
         DOCKER_IMAGE_NAME = "dgm83/gradle-test"
     }
-    stages {      
+    stages {    
+        stage('Build') {
+            steps {
+                echo 'Running build automation'
+                sh 'chmod +x ./gradlew'
+                sh './gradlew build --no-daemon'
+                }
+            }
+        }
+    
         stage('Build Docker Image') {
             when {
                 branch 'master'
